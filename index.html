@@ -1,235 +1,786 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZERO TRACE - Digital Ghost. Unseen Guardian.</title>
+    <title>CYBER GUARDIAN | الحارس الرقمي</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Tajawal', sans-serif;
         }
         
         body {
-            background-color: #05080f; /* لون أغمق لهيبة أكثر */
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
             color: #e0e0e0;
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
         
-        header {
-            text-align: center;
-            padding: 60px 0;
-            border-bottom: 1px solid #1a2332;
-            margin-bottom: 40px;
+        /* تأثيرات الخلفية */
+        .bg-effects {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
         }
         
-        .logo {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            font-weight: 900;
-            color: #00d4ff;
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
-            letter-spacing: 5px;
-            margin-bottom: 10px;
+        .matrix-code {
+            position: absolute;
+            color: #00ff88;
+            font-size: 14px;
+            font-family: monospace;
+            opacity: 0.7;
+            animation: fall 20s linear infinite;
         }
         
-        .tagline {
-            font-size: 1.2rem;
-            color: #8a9bb2;
-            font-family: 'Courier New', Courier, monospace;
-            margin-bottom: 30px;
+        @keyframes fall {
+            from { transform: translateY(-100px); }
+            to { transform: translateY(100vh); }
         }
         
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
+        /* الهيدر */
+        .header {
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            border-bottom: 2px solid #00ff88;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         
-        .sidebar {
-            flex: 1;
-            min-width: 280px;
-            background-color: #0d1421;
-            padding: 25px;
-            border-radius: 10px;
-            border: 1px solid #1a2332;
-            height: fit-content;
-        }
-        
-        .main-content {
-            flex: 3;
-            min-width: 320px;
-        }
-        
-        h2 {
-            color: #00d4ff;
-            border-right: 4px solid #00d4ff; /* خط جهة اليمين لأن اللغة عربية */
-            padding-right: 15px;
-            margin-bottom: 25px;
-            font-size: 1.6rem;
-            text-transform: uppercase;
-        }
-        
-        h3 {
-            color: #4fc3f7;
-            margin: 20px 0 15px;
-            font-size: 1.3rem;
-        }
-        
-        ul {
-            list-style-type: none;
-            padding-right: 0;
-        }
-        
-        li {
-            padding: 12px 0;
-            border-bottom: 1px solid #1a2332;
-            color: #b0bec5;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .section {
-            background-color: #0d1421;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            border: 1px solid #1a2332;
-            transition: 0.3s;
-        }
-
-        .section:hover {
-            border-color: #00d4ff;
-        }
-        
-        .vuln-item {
-            padding: 15px;
-            background-color: #151f30;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border-right: 4px solid #ff3d00;
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
-        .vuln-id {
-            color: #ff3d00;
-            font-weight: bold;
-            font-family: monospace;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        .logo {
+            display: flex;
+            align-items: center;
             gap: 15px;
-            margin-top: 15px;
         }
         
-        .skill-item {
-            background-color: #151f30;
-            padding: 15px;
+        .logo-icon {
+            color: #00ff88;
+            font-size: 2.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { text-shadow: 0 0 10px #00ff88; }
+            50% { text-shadow: 0 0 20px #00ff88, 0 0 30px #00ff88; }
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            color: #88ffcc;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-menu a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            color: #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00ff88;
+            transition: width 0.3s;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        /* المحتوى الرئيسي */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 5%;
+        }
+        
+        /* البانر */
+        .hero {
+            background: rgba(10, 20, 30, 0.8);
+            border-radius: 20px;
+            padding: 4rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #b0b0b0;
+            max-width: 800px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
             border-radius: 8px;
-            text-align: center;
-            border: 1px solid transparent;
-            transition: 0.3s;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
         }
         
-        .skill-item:hover {
-            border-color: #00d4ff;
-            background-color: #1a2538;
+        .btn-primary {
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            color: #000;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #00ff88;
+            border-color: #00ff88;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
+        }
+        
+        /* الأقسام */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #00ff88;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+        }
+        
+        /* البطاقات */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background: rgba(20, 30, 48, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .card:hover::before {
+            left: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #00ff88;
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            color: #00ff88;
+            margin-bottom: 1rem;
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+        
+        /* قائمة المهارات */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .skill-tag {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .skill-tag:hover {
+            background: rgba(0, 255, 136, 0.2);
             transform: scale(1.05);
         }
         
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            margin-top: 50px;
-            border-top: 1px solid #1a2332;
-            color: #8a9bb2;
+        /* الفوتر */
+        .footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 3rem 5%;
+            margin-top: 5rem;
+            border-top: 2px solid #00ff88;
         }
-
-        /* تحسين استجابة الموبايل */
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-section h3 {
+            color: #00ff88;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #00ff88;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: #b0b0b0;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #00ff88;
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+        }
+        
+        /* القسم المتحرك */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+        
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #00ff88;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* التجاوب */
         @media (max-width: 768px) {
-            .container { flex-direction: column; }
-            .sidebar { order: 2; }
-            .main-content { order: 1; }
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        /* تأثيرات خاصة */
+        .glitch {
+            position: relative;
+        }
+        
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            left: 2px;
+            text-shadow: -1px 0 #ff00ff;
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        
+        .glitch::after {
+            left: -2px;
+            text-shadow: -1px 0 #00ffff;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        
+        @keyframes glitch-anim {
+            0% { clip: rect(42px, 9999px, 44px, 0); }
+            5% { clip: rect(12px, 9999px, 59px, 0); }
+            10% { clip: rect(48px, 9999px, 29px, 0); }
+            15.0% { clip: rect(42px, 9999px, 73px, 0); }
+            20% { clip: rect(63px, 9999px, 27px, 0); }
+            25% { clip: rect(34px, 9999px, 55px, 0); }
+            30.0% { clip: rect(86px, 9999px, 73px, 0); }
+            35% { clip: rect(20px, 9999px, 20px, 0); }
+            40% { clip: rect(26px, 9999px, 60px, 0); }
+            45% { clip: rect(25px, 9999px, 66px, 0); }
+            50% { clip: rect(57px, 9999px, 98px, 0); }
+            55.0% { clip: rect(5px, 9999px, 46px, 0); }
+            60.0% { clip: rect(82px, 9999px, 31px, 0); }
+            65% { clip: rect(54px, 9999px, 27px, 0); }
+            70% { clip: rect(28px, 9999px, 99px, 0); }
+            75% { clip: rect(45px, 9999px, 69px, 0); }
+            80% { clip: rect(23px, 9999px, 85px, 0); }
+            85.0% { clip: rect(54px, 9999px, 84px, 0); }
+            90% { clip: rect(45px, 9999px, 47px, 0); }
+            95% { clip: rect(37px, 9999px, 20px, 0); }
+            100% { clip: rect(4px, 9999px, 91px, 0); }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">ZERO TRACE</div>
-        <div class="tagline">> Digital Ghost. Unseen Guardian. _</div>
+    <!-- تأثيرات الخلفية -->
+    <div class="bg-effects" id="matrixEffect"></div>
+    
+    <!-- الهيدر -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-user-secret logo-icon"></i>
+                <div>
+                    <div class="logo-text">Cyber Guardian</div>
+                    <div class="tagline">الحارس الرقمي الذي لا يُرى</div>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#home"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="#services"><i class="fas fa-shield-alt"></i> الخدمات</a></li>
+                <li><a href="#skills"><i class="fas fa-code"></i> المهارات</a></li>
+                <li><a href="#vulnerabilities"><i class="fas fa-bug"></i> الثغرات</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> تواصل</a></li>
+            </ul>
+        </div>
     </header>
     
-    <div class="container">
-        <aside class="sidebar">
-            <h2><i class="fas fa-terminal"></i> القائمة</h2>
-            <ul>
-                <li><i class="fas fa-bug"></i> السجل البرمجي</li>
-                <li><i class="fas fa-shield-alt"></i> الثغرات المكتشفة</li>
-                <li><i class="fas fa-code"></i> لغات البرمجة</li>
-                <li><i class="fas fa-certificate"></i> الشهادات الدولية</li>
-                <li><i class="fas fa-envelope"></i> اتصل بي</li>
-            </ul>
-        </aside>
+    <!-- المحتوى الرئيسي -->
+    <main class="main-container">
+        <!-- البانر -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1 class="glitch" data-text="CYBER SECURITY">CYBER SECURITY</h1>
+                <p>نحن الحاجز بينك وبين التهديدات السيبرانية. نقدم حلول أمنية متكاملة لحماية بياناتك وأنظمتك من الاختراقات والهجمات الإلكترونية باستخدام أحدث التقنيات وأساليب الحماية المتقدمة.</p>
+                
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-phone-alt"></i> ابدأ الحماية الآن
+                    </a>
+                    <a href="#services" class="btn btn-secondary">
+                        <i class="fas fa-eye"></i> عرض الخدمات
+                    </a>
+                </div>
+            </div>
+        </section>
         
-        <main class="main-content">
-            <section class="section">
-                <h2><i class="fas fa-search-plus"></i> الثغرات الأمنية المكتشفة</h2>
-                <div class="vuln-item">
-                    <span class="vuln-id">CVE-2025-1234</span>
-                    <span class="vuln-desc">تنفيذ أكواد عن بعد (RCE) في [Software X]</span>
-                </div>
-                <div class="vuln-item">
-                    <span class="vuln-id">CVE-2024-5678</span>
-                    <span class="vuln-desc">تخطي نظام الحماية في [Software Y]</span>
-                </div>
-                <div class="vuln-item">
-                    <span class="vuln-id">CVE-2024-9201</span>
-                    <span class="vuln-desc">ثغرة XSS في منصة [Platform Z]</span>
-                </div>
-            </section>
-            
-            <section class="section">
-                <h2><i class="fas fa-award"></i> الخبرات والشهادات</h2>
-                <ul>
-                    <li><i class="fas fa-check-circle" style="color:#00d4ff"></i> OSCP - Offensive Security Certified Professional</li>
-                    <li><i class="fas fa-check-circle" style="color:#00d4ff"></i> CISSP - خبير أمن نظم معلومات معتمد</li>
-                    <li><i class="fas fa-check-circle" style="color:#00d4ff"></i> خبير اختراق لدى شركة GLOBALNET</li>
-                </ul>
-            </section>
-            
-            <section class="section">
-                <h2><i class="fas fa-laptop-code"></i> المهارات التقنية</h2>
-                <h3>لغات البرمجة</h3>
-                <div class="skills-grid">
-                    <div class="skill-item">Python</div>
-                    <div class="skill-item">C++</div>
-                    <div class="skill-item">Go Lang</div>
-                    <div class="skill-item">Ruby</div>
+        <!-- الإحصائيات -->
+        <section class="stats">
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <p>ثغرة تم اكتشافها</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">99.9%</div>
+                <p>نسبة الحماية</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <p>عميل راضٍ</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <p>مراقبة مستمرة</p>
+            </div>
+        </section>
+        
+        <!-- الخدمات -->
+        <section id="services">
+            <h2 class="section-title"><i class="fas fa-shield-alt"></i> خدماتنا الأمنية</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <i class="fas fa-skull-crossbones card-icon"></i>
+                    <h3>اختبار الاختراق</h3>
+                    <p>نقوم بمحاكاة هجمات حقيقية على أنظمتك لاكتشاف نقاط الضعف قبل المخترقين.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">OWASP Top 10</span>
+                        <span class="skill-tag">Network Pentest</span>
+                        <span class="skill-tag">Web App Pentest</span>
+                    </div>
                 </div>
                 
-                <h3>الأمن السيبراني</h3>
-                <div class="skills-grid">
-                    <div class="skill-item">اختبار الاختراق المتقدم</div>
-                    <div class="skill-item">الهندسة العكسية</div>
-                    <div class="skill-item">أمن البلوكشين</div>
+                <div class="card">
+                    <i class="fas fa-virus card-icon"></i>
+                    <h3>تحليل البرمجيات الخبيثة</h3>
+                    <p>فك تشفير وتحليل الفيروسات والبرمجيات الضادة لفهم آلية عملها وتطوير الحماية.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Reverse Engineering</span>
+                        <span class="skill-tag">Malware Analysis</span>
+                        <span class="skill-tag">Sandboxing</span>
+                    </div>
                 </div>
-            </section>
-        </main>
-    </div>
+                
+                <div class="card">
+                    <i class="fas fa-user-shield card-icon"></i>
+                    <h3>حماية الشبكات</h3>
+                    <p>تأمين شامل للشبكات والبنية التحتية مع مراقبة مستمرة لاكتشاف أي نشاط مشبوه.</p>
+                    <div class="skills-list">
+                        <span class="skill-tag">Firewall</span>
+                        <span class="skill-tag">IDS/IPS</span>
+                        <span class="skill-tag">SIEM</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- المهارات -->
+        <section id="skills" style="margin-top: 5rem;">
+            <h2 class="section-title"><i class="fas fa-code"></i> المهارات والتقنيات</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3><i class="fas fa-laptop-code"></i> لغات البرمجة</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Go</span>
+                        <span class="skill-tag">Bash</span>
+                        <span class="skill-tag">Assembly</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-tools"></i> أدوات الأمن</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Metasploit</span>
+                        <span class="skill-tag">Burp Suite</span>
+                        <span class="skill-tag">Wireshark</span>
+                        <span class="skill-tag">Nmap</span>
+                        <span class="skill-tag">IDA Pro</span>
+                        <span class="skill-tag">Ghidra</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-certificate"></i> الشهادات</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">OSCP</span>
+                        <span class="skill-tag">CISSP</span>
+                        <span class="skill-tag">CEH</span>
+                        <span class="skill-tag">CompTIA Security+</span>
+                        <span class="skill-tag">SANS GPEN</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- الثغرات المكتشفة -->
+        <section id="vulnerabilities" style="margin-top: 5rem;">
+            <h2 class="section-title"><i class="fas fa-bug"></i> آخر الثغرات المكتشفة</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3 style="color: #ff5555;">CVE-2025-1234</h3>
+                    <p><strong>نوع الهجوم:</strong> تنفيذ عن بعد للكود</p>
+                    <p><strong>البرنامج:</strong> نظام إدارة المحتوى X</p>
+                    <p><strong>خطورته:</strong> عالية (9.8/10)</p>
+                    <span class="skill-tag" style="background: rgba(255, 85, 85, 0.2); color: #ff5555;">Critical</span>
+                </div>
+                
+                <div class="card">
+                    <h3 style="color: #ffaa00;">CVE-2024-5678</h3>
+                    <p><strong>نوع الهجوم:</strong> حقن SQL</p>
+                    <p><strong>المنصة:</strong> نظام التجارة الإلكترونية Y</p>
+                    <p><strong>خطورته:</strong> متوسطة (7.5/10)</p>
+                    <span class="skill-tag" style="background: rgba(255, 170, 0, 0.2); color: #ffaa00;">Medium</span>
+                </div>
+                
+                <div class="card">
+                    <h3 style="color: #ff5555;">CVE-2025-9101</h3>
+                    <p><strong>نوع الهجوم:</strong> تسريب البيانات</p>
+                    <p><strong>النظام:</strong> نظام السحابة Z</p>
+                    <p><strong>خطورته:</strong> عالية (8.9/10)</p>
+                    <span class="skill-tag" style="background: rgba(255, 85, 85, 0.2); color: #ff5555;">High</span>
+                </div>
+            </div>
+        </section>
+    </main>
     
-    <footer>
-        <p>© 2026 Zero Trace. جميع الحقوق محفوظة.</p>
-        <p style="color: #5d6b82; margin-top: 5px;">Digital Ghost. Unseen Guardian.</p>
+    <!-- الفوتر -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3><i class="fas fa-user-secret"></i> Cyber Guardian</h3>
+                <p>الحارس الرقمي الذي يحمي عالمك الإلكتروني. نحن نعمل في الخفاء، ولكن تأثيرنا واضح.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3><i class="fas fa-link"></i> روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#services">الخدمات</a></li>
+                    <li><a href="#skills">المهارات</a></li>
+                    <li><a href="#vulnerabilities">الثغرات</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3><i class="fas fa-envelope"></i> تواصل معنا</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> contact@cyberguardian.com</li>
+                    <li><i class="fas fa-phone"></i> +123 456 7890</li>
+                    <li><i class="fas fa-map-marker-alt"></i> مقر الحماية الرقمية</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2026 Cyber Guardian. جميع الحقوق محفوظة.</p>
+            <p style="margin-top: 10px; color: #00ff88;">الحارس الرقمي - غير مرئي، لا يُنسى</p>
+        </div>
     </footer>
+    
+    <script>
+        // تأثير ماتريكس للخلفية
+        function createMatrixEffect() {
+            const matrixEffect = document.getElementById('matrixEffect');
+            const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+            
+            for (let i = 0; i < 50; i++) {
+                const matrixCode = document.createElement('div');
+                matrixCode.className = 'matrix-code';
+                matrixCode.textContent = chars[Math.floor(Math.random() * chars.length)];
+                matrixCode.style.left = Math.random() * 100 + 'vw';
+                matrixCode.style.animationDelay = Math.random() * 20 + 's';
+                matrixCode.style.fontSize = (Math.random() * 10 + 10) + 'px';
+                matrixEffect.appendChild(matrixCode);
+            }
+        }
+        
+        // تأثير الأرقام المتحركة
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(current) + (stat.textContent.includes('%') ? '%' : '+');
+                }, 20);
+            });
+        }
+        
+        // تنفيذ عند التمرير
+        window.addEventListener('scroll', () => {
+            const statsSection = document.querySelector('.stats');
+            const sectionPosition = statsSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            
+            if (sectionPosition < screenPosition) {
+                animateStats();
+            }
+        });
+        
+        // تهيئة الصفحة
+        document.addEventListener('DOMContentLoaded', () => {
+            createMatrixEffect();
+            
+            // تأثير Glitch للعنوان
+            const glitch = document.querySelector('.glitch');
+            setInterval(() => {
+                glitch.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+            }, 100);
+            
+            // تأثيرات للبطاقات عند التمرير
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s, transform 0.5s';
+                observer.observe(card);
+            });
+        });
+    </script>
 </body>
 </html>
