@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero Trace</title>
+    <style>
+        body {
+            background: #000;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Arial Black', sans-serif;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+        .main-container {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .clean-text {
+            font-size: clamp(40px, 10vw, 110px);
+            font-weight: 900;
+            color: #FFFFFF;
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+        }
+        .tagline {
+            font-family: 'Courier New', monospace;
+            letter-spacing: 8px;
+            font-size: clamp(10px, 2vw, 16px);
+            color: #666;
+            margin-top: 5px;
+        }
+        .cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            transition: 0.1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-glow"></div>
+    <div class="main-container">
+        <h1 class="clean-text">ZERO TRACE</h1>
+        <p class="tagline">DECRYPTING THE UNKNOWN</p>
+    </div>
+    <script>
+        const glow = document.querySelector('.cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html>
